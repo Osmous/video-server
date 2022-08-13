@@ -70,6 +70,8 @@ def genThumbnails():
             except subprocess.CalledProcessError as e:
                 print(e)
     for i in os.listdir("static/thumbnails"):
+        if ".gitignore" in i:
+            continue
         base=os.path.splitext(i)[0]
         thumbnails.append(base)
     
