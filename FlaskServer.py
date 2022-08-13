@@ -31,6 +31,8 @@ def index():
     genThumbnails()
     links=[]
     for count, filename in enumerate(os.listdir("static/videos")): 
+        if ".gitignore" in filename:
+            continue
         filenamesafe = urllib.parse.quote(filename,safe='')
         finenameNoExt= os.path.splitext(filename)[0]
         row = [filename,filenamesafe,finenameNoExt]
@@ -53,6 +55,8 @@ def genThumbnails():
     videos = []
     thumbnails = []
     for i in os.listdir("static/videos"):
+        if ".gitignore" in i:
+            continue
         base=os.path.splitext(i)[0]
         videos.append(base)
         if os.path.exists("static/thumbnails/"+base+".jpg"):
